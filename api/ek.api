@@ -1,0 +1,17 @@
+type Request {
+    Name string `path:"name,options=you|me"`
+}
+
+type Response {
+    Message string `json:"message"`
+}
+
+@server (
+    prefix: /ek
+    group : ek/api
+)
+
+service easyStart-api {
+    @handler EasyDbHandler
+    get /testDb returns (Response)
+}
